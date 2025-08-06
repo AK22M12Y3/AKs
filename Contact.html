@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact – Hau</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900,600,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background: #fff;
+            color: #111;
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+        }
+        .top-bar {
+            width: 100%;
+            max-width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 32px 40px 0 40px;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            box-sizing: border-box;
+            margin-bottom: 0;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+        }
+        .location-time {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            font-size: 14px;
+        }
+        .black-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #111;
+            border-radius: 50%;
+        }
+
+        /* CONTACT PAGE MAIN GRID */
+        .contact-main {
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+        }
+        .contact-left {
+            flex: 1.15;
+            padding: 90px 6vw 40px 7vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background: #fff;
+        }
+        .contact-title {
+            font-size: 5vw;
+            font-weight: 400;
+            line-height: 1.06;
+            margin: 0 0 14px 0;
+            letter-spacing: -0.04em;
+        }
+        .contact-sub {
+            font-size: 1.5vw;
+            max-width: 560px;
+            font-weight: 400;
+            margin: 0 0 35px 0;
+            line-height: 1.21;
+        }
+        .contact-btn {
+            text-decoration: none;
+            background: #e0e0e0;
+            color: #111;
+            padding: 13px 30px 13px 30px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            transition: background .16s, color .16s;
+            display: inline-block;
+            margin-bottom: 34px;
+        }
+        .contact-btn:hover { background: #222; color: #fff; }
+        .contact-details {
+            display: flex;
+            flex-direction: row;
+            gap: 70px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .contact-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .contact-label {
+            font-size: 1rem;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: 1.5px;
+        }
+        .contact-block a, .contact-block span {
+            text-decoration: none;
+            color: #222;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.17s;
+        }
+        .contact-block a:hover { color: #666; text-decoration: underline; }
+        .contact-block span {
+            color: #999;
+            font-weight: 400;
+        }
+
+        /* CONTACT RIGHT (IMAGE) */
+        .contact-right {
+            flex: 1;
+            min-width: 0;
+            background: #fafafa;
+            display: flex;
+            align-items: stretch;
+        }
+        .contact-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 400px;
+            filter: grayscale(1);
+        }
+
+        /* NAVIGATION - Same as home */
+        .nav-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            max-width: 1200px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #e0e0e0;
+            padding: 10px 0;
+        }
+        .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+            border-radius: 30px;
+            padding: 5px;
+        }
+        .nav a {
+            text-decoration: none;
+            padding: 6px 18px;
+            font-size: 9px;
+            color: #222;
+            background: none;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: background .25s, color .25s;
+            cursor: pointer;
+            position: relative;
+        }
+        .nav a.active {
+            color: #fff;
+            background: #222;
+        }
+        .nav a:hover,
+        .nav a:focus {
+            background: #222;
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .contact-main {
+                flex-direction: column;
+            }
+            .contact-left {
+                padding: 60px 8vw 35px 8vw;
+                flex: none;
+            }
+            .contact-title {
+                font-size: 10vw;
+            }
+            .contact-sub {
+                font-size: 2.5vw;
+            }
+            .contact-right {
+                min-height: 250px;
+                height: 240px;
+                justify-content: center;
+            }
+            .contact-img {
+                max-height: 340px;
+            }
+            .contact-details { gap: 35px;}
+        }
+        @media (max-width:600px) {
+            .top-bar {
+                padding: 13px 10px 0 8px;
+                font-size: 13px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-left {
+                padding: 30px 5vw 14px 5vw;
+            }
+            .contact-title {
+                font-size: 11vw;
+            }
+            .contact-sub {
+                font-size: 4vw;
+            }
+            .nav-wrapper {
+                padding: 6px 0;
+            }
+            .contact-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        @media (max-width:500px) {
+            .contact-main {padding-bottom: 60px;}
+            .contact-img { min-height: 180px; }
+            .contact-left { padding: 22px 2vw 12px 2vw;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="top-bar">
+        <span class="logo">AKsˇ</span>
+        <span class="location-time">
+            <span>New Delhi</span>
+            <span class="black-dot"></span>
+            <span id="ist-clock">--:--:-- IST</span>
+        </span>
+    </div>
+    <!-- Contact page split layout -->
+    <div class="contact-main">
+        <!-- Left: Contact Info -->
+        <div class="contact-left">
+            <span class="contact-title">Contact</span>
+            <p class="contact-sub">Let's start a conversation about your brand<br>or project.</p>
+            <a href="mailto:lars@hau.studio" class="contact-btn">● GET IN TOUCH</a>
+            <div class="contact-details">
+                <div class="contact-block">
+                    <div class="contact-label">CONTACT ME</div>
+                    <a href="mailto:lars@hau.studio">lars@hau.studio</a>
+                    <span>0045 31337524</span>
+                </div>
+                <div class="contact-block">
+                    <div class="contact-label">FOLLOW ME</div>
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <!-- Right: Contact Image -->
+        <div class="contact-right">
+            <img src="lars-1.jpg" alt="Contact" class="contact-img" />
+        </div>
+    </div>
+    <!-- Navigation Bar -->
+    <div class="nav-wrapper">
+        <nav class="nav">
+            <a href="index.html">HOME</a>
+            <a href="Work.html">WORK</a>
+            <a href="Archives.html">ARCHIVE</a>
+            <a href="About.html">ABOUT</a>
+            <a href="contact.html" class="active">CONTACT</a>
+        </nav>
+    </div>
+    <script>
+      // Live IST Clock
+function updateClock() {
+    // Uses Intl API to convert time to Asia/Kolkata timezone
+    const now = new Date();
+    const istTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+    const h = String(istTime.getHours()).padStart(2, '0');
+    const m = String(istTime.getMinutes()).padStart(2, '0');
+    const s = String(istTime.getSeconds()).padStart(2, '0');
+    document.getElementById('ist-clock').textContent = `${h}:${m}:${s} IST`;
+}
+updateClock();
+setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work – Hau</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:900,600,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: inherit; }
+    html, body {
+      background: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #111;
+      box-sizing: border-box;
+      min-height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+    .top-bar {
+      width: 100%;
+      max-width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 32px 40px 0 40px;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      box-sizing: border-box;
+      background: transparent;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+    .location-time {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      font-size: 14px;
+    }
+    .black-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: #111;
+      border-radius: 50%;
+    }
+    .nav-wrapper {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      max-width: 1200px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid #e0e0e0;
+      padding: 10px 0;
+      background: none;
+      box-sizing: border-box;
+    }
+    body { padding-bottom: 70px; }
+    .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      border-radius: 30px;
+      padding: 5px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      white-space: nowrap;
+      text-decoration: none;
+      padding: 6px 18px;
+      font-size: 9px;
+      color: #222;
+      background: none;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: background 0.25s, color 0.25s;
+      cursor: pointer;
+      position: relative;
+    }
+    .nav a.active {
+      color: #fff;
+      background: #222;
+    }
+    .nav a:hover,
+    .nav a:focus {
+      background: #222;
+      color: #fff;
+    }
+    /* -------- WORK PAGE MAIN STYLES -------- */
+    .work-main-content {
+      max-width: 1470px;
+      width: 100vw;
+      padding: 64px 4vw 15px 4vw;
+      margin: 0 auto 60px auto;
+      box-sizing: border-box;
+    }
+    .work-heading {
+      font-size: 7vw;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.07;
+      margin: 60px 0 34px 0;
+      max-width: 1100px;
+      word-break: break-word;
+    }
+    .work-filters {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 54px;
+      flex-wrap: wrap;
+    }
+    .work-filter-btn {
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 500;
+      color: #222;
+      background: #ededed;
+      border: none;
+      border-radius: 22px;
+      padding: 9px 23px;
+      margin: 0;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: color .16s, background .16s;
+    }
+    .work-filter-btn.active,
+    .work-filter-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+    /* IMAGES GRID - rows of side-by-side images, each with their own caption */
+    .work-images-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2vw;
+      margin-bottom: 54px;
+    }
+    .work-images-row > div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .work-img-big {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 11px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .work-img-tall {
+      width: 100%;
+      aspect-ratio: 0.85 / 1;
+      object-fit: cover;
+      border-radius: 11px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      display: block;
+      height: 100%;
+      margin-bottom: 10px;
+    }
+    .work-block-heading {
+      font-size: 2.1vw;
+      font-weight: 600;
+      color: #111;
+      margin: 8px 0 6px 0;
+      letter-spacing: 0.01em;
+    }
+    .work-block-description {
+      font-size: 1.08vw;
+      color: #444;
+      line-height: 1.38;
+      margin: 0 0 4px 0;
+      max-width: 540px;
+    }
+    /* REPEATED IMAGE + TEXT BLOCKS (stacked) */
+    .work-images-block {
+      margin-top: 46px;
+      margin-bottom: 54px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .work-block-img {
+      width: 100%;
+      max-width: 650px;
+      aspect-ratio: 16/11;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 11px rgba(0,0,0,0.08);
+      margin-bottom: 18px;
+    }
+    @media (max-width: 900px) {
+      .work-main-content { padding: 32px 3vw 14px 3vw; }
+      .work-heading { font-size: 13vw; }
+      .work-images-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .work-block-heading { font-size: 4vw; }
+      .work-block-description { font-size: 2.7vw; }
+      .work-block-img { max-width: 100%; }
+      .work-img-tall, .work-img-big { aspect-ratio: 1/1; }
+    }
+    @media (max-width: 600px) {
+      .work-main-content { padding: 18px 2vw 5px 2vw; }
+      .work-heading { font-size: 15vw; }
+      .work-filter-btn { font-size: 15px; padding: 8px 17px; }
+      .work-images-row, .work-images-block {
+        margin-bottom: 26px;
+      }
+      .work-block-heading { font-size: 8vw; }
+      .work-block-description { font-size: 4vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="top-bar">
+    <span class="logo">AKsˇ</span>
+    <span class="location-time">
+      <span>New Delhi</span>
+      <span class="black-dot"></span>
+      <span id="ist-clock">--:--:-- IST</span>
+    </span>
+  </div>
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <a href="index.html">HOME</a>
+      <a href="Work.html" class="active">WORK</a>
+      <a href="Archives.html">ARCHIVE</a>
+      <a href="About.html">ABOUT</a>
+      <a href="Contact.html">CONTACT</a>
+    </nav>
+  </div>
+  <main class="work-main-content">
+    <!-- Heading -->
+    <div class="work-heading">Recent work</div>
+    <!-- Filter Buttons -->
+    <div class="work-filters">
+      <button class="work-filter-btn active">All</button>
+      <button class="work-filter-btn">Photography</button>
+      <button class="work-filter-btn">Cinematography</button>
+      <button class="work-filter-btn">Art Direction</button>
+      <button class="work-filter-btn">Motion</button>
+      <button class="work-filter-btn">Branding</button>
+      <!-- Add more buttons as needed -->
+    </div>
+    <!-- Images Grid (2 main images, side by side with heading + para for each) -->
+    <div class="work-images-row">
+      <div>
+        <a href=""><img src="lars-1.jpg" alt="Work Big 1" class="work-img-big"/></a>
+        <div class="work-block-heading">Big Project Name</div>
+        <div class="work-block-description">A highlight of innovative design and impactful brand storytelling, bringing ideas to luminous life.</div>
+      </div>
+      <div>
+        <a href=""><img src="ssssss.png" alt="Work Tall 1" class="work-img-tall"/></a>
+        <div class="work-block-heading">Vertical Project</div>
+        <div class="work-block-description">Elegant visual execution with bold cinematic focus—crafted for maximum engagement across media.</div>
+      </div>
+    </div>
+    <!-- Another row with two images side by side, each with caption and para -->
+    <div class="work-images-row">
+      <div>
+        <a href=""><img src="Image.jpg" alt="Side Image 1" class="work-img-big"/></a>
+        <div class="work-block-heading">Side Image 1</div>
+        <div class="work-block-description">A sleek campaign for a premium launch, blending minimal aesthetics and modern energy.</div>
+      </div>
+      <div>
+        <a href=""><img src="BB-lookbook.jpg" alt="Side Image 2" class="work-img-tall"/></a>
+        <div class="work-block-heading">Side Image 2</div>
+        <div class="work-block-description">Dynamic motion graphics and stills created to set a vibrant tone for the season.</div>
+      </div>
+    </div>
+    <!-- BELOW: Repeated blocks for more works (vertical stack) -->
+    <div class="work-images-block">
+      <a href=""><img src="image-31-copy.png" alt="Project 1" class="work-block-img"/></a>
+      <div class="work-block-heading">VELUX</div>
+      <div class="work-block-description">
+        Innovative skylights and building materials that brighten and refresh home spaces.
+      </div>
+    </div>
+    <div class="work-images-block">
+      <a href=""><img src="BB-lookbook.jpg" alt="Project 2" class="work-block-img"/></a>
+      <div class="work-block-heading">BB Lookbook</div>
+      <div class="work-block-description">
+        Creative branding and marketing materials designed to captivate and engage viewers.
+      </div>
+    </div>
+    <!-- Add more blocks by repeating above .work-images-block as needed -->
+  </main>
+  <script>
+    // Live Clock
+    function updateClock() {
+      const now = new Date();
+      const options = {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      const formatter = new Intl.DateTimeFormat('en-IN', options);
+      const istTime = formatter.format(now);
+      const clockElement = document.getElementById('ist-clock');
+      if (clockElement) clockElement.textContent = `${istTime} IST`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    document.querySelectorAll('.work-filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.work-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Add your filter logic here if needed
+      });
+    });
+  </script>
+</body>
+</html>

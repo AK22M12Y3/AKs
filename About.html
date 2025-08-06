@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>About – Hau</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900,600,400&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            background: #fff;
+            color: #111;
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        .top-bar {
+            width: 100%;
+            max-width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 32px 40px 0 40px;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            box-sizing: border-box;
+            margin-bottom: 0;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+        }
+        .location-time {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            font-size: 14px;
+        }
+        .black-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #111;
+            border-radius: 50%;
+        }
+        .about-main {
+            width: 100vw;
+            min-height: 84vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            overflow-x: hidden;
+        }
+        .about-content {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 40px 3vw 0 6vw;
+            display: flex;
+            flex-direction: column;
+        }
+        .about-names {
+            font-size: 6vw;
+            font-weight: 400;
+            line-height: 1;
+            margin: 70px 0 0 0;
+            letter-spacing: -0.04em;
+            margin-bottom: 80px;
+        }
+        .about-dot {
+            width: 17px;
+            height: 17px;
+            background: #111;
+            border-radius: 50%;
+            margin: 48px 0 44px 11vw;
+        }
+        .about-lead {
+            font-size: 2.35vw;
+            max-width: 90vw;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            line-height: 1.23;
+            letter-spacing: -0.01vw;
+        }
+        .about-splits {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 3vw;
+            margin-top: 18px;
+        }
+        .about-split-col {
+            flex: 1;
+            min-width: 190px;
+            font-size: 1vw;
+            max-width: 380px;
+        }
+        /* Nav */
+        .nav-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            max-width: 1200px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #e0e0e0;
+            padding: 10px 0;
+            background: transparent;
+        }
+        .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+            border-radius: 30px;
+            padding: 5px;
+        }
+        .nav a {
+            text-decoration: none;
+            padding: 6px 18px;
+            font-size: 9px;
+            color: #222;
+            background: none;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: background .25s, color .25s;
+            cursor: pointer;
+            position: relative;
+        }
+        .nav a.active {
+            color: #fff;
+            background: #222;
+        }
+        .nav a:hover,
+        .nav a:focus {
+            background: #222;
+            color: #fff;
+        }
+        @media (max-width:1100px) {
+            .about-content {
+                padding: 34px 2vw 0 2vw;
+            }
+            .about-dot {
+                margin-left: 3vw;
+            }
+        }
+        @media (max-width:900px) {
+            .about-names { font-size: 11vw; margin-top: 40px;}
+            .about-lead { font-size: 2.5vw; }
+            .about-splits { flex-direction: column; gap: 18px;}
+            .about-split-col { font-size: 2vw; max-width: none; }
+        }
+        @media (max-width:600px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 13px 10px 0 8px;
+                font-size: 13px;
+            }
+            .about-content {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+            .about-names {
+                font-size: 13vw;
+                margin-top: 22px;
+             
+            }
+    
+            .about-lead {
+                font-size: 4vw;
+            }
+            .about-split-col {
+                font-size: 3.1vw;
+            }
+        }
+
+        .big-image-section {
+    width: 100vw;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    background: #eee; /* Optional: gives a neutral background if image doesn't fill area */
+    margin-top: 10px;
+}
+
+.big-section-img {
+    width: 100vw;
+    height: 50vw;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .big-section-img {
+        height: 60vw;
+    }
+}
+@media (max-width: 600px) {
+    .big-section-img {
+        height: 80vw;
+    }
+}
+
+.services-section {
+  width: 100vw;
+  max-width: 100%;
+  min-height: 48vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: #fff;
+ 
+}
+.services-heading-wrap {
+  width: 40%;
+  min-width: 250px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4vw;
+  padding-left: 4vw;
+}
+.services-heading {
+  font-size: 5vw;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.services-heading span {
+  font-size: 1.3vw;
+  font-weight: 400;
+  vertical-align: super;
+}
+.services-content-wrap {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4vw;
+  padding-right: 4vw;
+  margin-left: 16vw;
+}
+.services-description {
+  font-size: 1.03vw;
+  color: #111;
+  max-width: 420px;
+  margin-bottom: 1.8vw;
+  margin-left: 15vw;
+}
+.services-columns {
+  display: flex;
+  gap: 3vw;
+  margin-left: 15vw;
+  align-items: flex-start;
+}
+.column-title {
+  font-weight: bold;
+  font-size: 1.05vw;
+  margin-bottom: 0.8vw;
+  color: #111;
+  letter-spacing: 0.06em;
+}
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.services-list li {
+  font-size: 1vw;
+  font-weight: 400;
+  color: #444;
+  margin: 0.47vw 0;
+  letter-spacing: -0.01vw;
+    transition: color .18s;
+}
+.services-list li:hover {
+  color: #111;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 900px) {
+  .services-section {
+    flex-direction: column;
+    min-height: initial;
+  }
+  .services-heading-wrap, .services-content-wrap {
+    width: 100%;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-top: 22px;
+  }
+  .services-description, .services-columns {
+    margin-left: 0;
+  }
+  .services-columns {
+    gap: 36px;
+  }
+  .column-title {
+    font-size: 16px;
+  }
+  .services-list li {
+    font-size: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .services-heading {
+    font-size: 9vw;
+  }
+  .services-heading span {
+    font-size: 16px;
+  }
+  .services-content-wrap {
+    padding-top: 10px;
+  }
+  .services-description {
+    font-size: 13px;
+    max-width: 95vw;
+    margin-bottom: 10px;
+  }
+  .services-columns {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .column-title {
+    font-size: 15px;
+  }
+  .services-list li {
+    font-size: 13px;
+  }
+}
+
+.clients-section {
+  width: 100vw;
+  max-width: 100%;
+  background: #f6f6f6;
+  min-height: 40vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.clients-heading-wrap {
+  width: 40%;
+  min-width: 220px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4vw;
+  padding-left: 5vw;
+}
+
+.clients-heading {
+  font-size: 3vw;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.clients-heading span {
+  font-size: 1.4vw;
+  font-weight: 400;
+  vertical-align: super;
+}
+
+.clients-content-wrap {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4vw;
+  padding-right: 4vw;
+}
+
+.clients-description {
+  font-size: 1.03vw;
+  color: #222;
+  max-width: 440px;
+  margin-bottom: 2vw;
+  margin-left: 20vw;
+}
+
+.clients-list {
+  margin-left: 20vw;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.clients-list li {
+  font-size: 1.37vw;
+  font-weight: 400;
+  color: #111;
+  padding: 0.25vw 0;
+  margin: 0;
+}
+
+.clients-list a {
+  color: #111;
+  text-decoration: none;
+  transition: color 0.15s;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.clients-list a:hover {
+  color: #888;
+}
+
+/* Responsive updates */
+@media (max-width: 900px) {
+  .clients-section {
+    flex-direction: column;
+    min-height: initial;
+  }
+  .clients-heading-wrap,
+  .clients-content-wrap {
+    width: 100%;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-top: 22px;
+  }
+  .clients-description, .clients-list {
+    margin-left: 0;
+  }
+  .clients-heading {
+    font-size: 8vw;
+  }
+  .clients-heading span {
+    font-size: 18px;
+  }
+  .clients-description {
+    font-size: 15px;
+  }
+  .clients-list li {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .clients-section { padding-bottom: 40px; }
+  .clients-heading { font-size: 10vw; }
+  .clients-heading span { font-size: 15px; }
+  .clients-content-wrap { padding-top: 10px;}
+  .clients-description { font-size: 13px; }
+  .clients-list li { font-size: 15px; }
+}
+
+.para-section {
+  width: 100vw;
+  max-width: 100%;
+  margin: 0;
+  padding: 50px 0 25px 3vw;
+  background: #fff;
+  height: 38vw;
+}
+
+.para-section p {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 3vw;
+  font-weight: 400;
+  color: #111;
+  line-height: 1.12;
+  letter-spacing: -0.03vw;
+  max-width: 1100px;
+  margin: 0;
+  word-break: break-word;
+}
+
+.para-section b {
+  font-weight: 700;
+}
+
+
+/* Responsive font size for smaller screens */
+@media (max-width: 900px) {
+  .para-section {
+    padding-left: 6vw;
+  }
+  .para-section p {
+    font-size: 4.2vw;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .para-section {
+    padding: 27px 0 18px 4vw;
+  }
+  .para-section p {
+    font-size: 6.2vw;
+    line-height: 1.18;
+  }
+}
+
+
+.testimonials-section {
+  width: 100vw;
+  max-width: 100%;
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  margin-bottom: 60px;
+}
+.testimonials-left {
+  padding-top: 4vw;
+  padding-left: 5vw;
+  width: 43%;
+  min-width: 240px;
+}
+.testimonials-heading {
+  font-size: 3.5vw;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.testimonials-heading span {
+  font-size: 1.2vw;
+  font-weight: 400;
+  vertical-align: super;
+}
+.testimonials-right {
+  width: 57%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4vw;
+  padding-right: 7vw;
+  position: relative;
+  margin-left: 25vw;
+}
+
+.testimonial-slider {
+  font-size: 1.09vw;
+  max-width: 470px;
+  min-height: 270px;
+  color: #222;
+  line-height: 1.24;
+  margin-bottom: 1.8vw;
+}
+.testimonial-author {
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 0;
+  color: #111;
+}
+.testimonial-role {
+  font-size: 0.92em;
+  color: #333;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.testimonial-src {
+  font-size: 0.92em;
+  color: #888;
+  text-decoration: none;
+}
+.testimonial-navigation {
+  margin-top: 6px;
+  margin-left: 2vw;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.testimonial-navigation button {
+  border: none;
+  background: #eee;
+  color: #111;
+  font-size: 1.2em;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 900;
+  transition: background 0.18s, color 0.18s;
+}
+.testimonial-navigation button:hover,
+.testimonial-navigation button:focus {
+  background: #222;
+  color: #fff;
+}
+#testimonial-index {
+  font-size: .98em;
+  color: #444;
+  min-width: 60px;
+  display: inline-block;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+@media (max-width:900px) {
+  .testimonials-section {
+    flex-direction: column;
+  }
+  .testimonials-left,
+  .testimonials-right {
+    width: 100%;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-top: 22px;
+  }
+  .testimonial-slider { font-size: 17px; min-height: 0; }
+  .testimonial-dot { margin-left: 0; }
+  .testimonials-heading { font-size: 7vw; }
+  .testimonials-heading span { font-size: 16px; }
+  .testimonial-navigation { margin-left: 0; }
+}
+@media (max-width:600px) {
+  .testimonials-heading { font-size: 10vw; }
+  .testimonials-heading span { font-size: 14px; }
+  .testimonial-slider { font-size: 14px; }
+}
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <span class="logo">AKsˇ</span>
+        <span class="location-time">
+            <span>New Delhi</span>
+            <span class="black-dot"></span>
+            <span id="ist-clock">--:--:-- IST</span>
+        </span>
+    </div>
+    <main class="about-main">
+        <div class="about-content">
+            <div class="about-names">
+                Lars<br>Hauschildt
+            </div>
+
+            <div class="about-lead">
+                I am a designer, brand strategist, and photographer <br>who is passionate about using the power<br> of captivating design and powerful visuals to<br> craft meaningful stories that make an impact.
+            </div>
+            <div class="about-splits">
+                <div class="about-split-col">
+                    With 15+ years of industry experience, I’ve had the privilege of crafting immersive visual experiences for many enterprise, tech, and lifestyle brands.
+                </div>
+                <div class="about-split-col">
+                    I transform bold creative concepts into stunning realities, all while sweating the small stuff to perfection.
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="nav-wrapper">
+        <nav class="nav">
+            <a href="index.html">HOME</a>
+            <a href="Work.html">WORK</a>
+            <a href="Archives.html">ARCHIVE</a>
+            <a href="About.html" class="active">ABOUT</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Big Responsive Image Section -->
+<section class="big-image-section">
+    <img src="Image.jpg" alt="Featured visual" class="big-section-img">
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="services-section">
+  <div class="services-heading-wrap">
+    <h2 class="services-heading">
+      Services <span id="services-count"></span>
+    </h2>
+  </div>
+  <div class="services-content-wrap">
+    <div class="services-description">
+      From first spark to final polish, I shape ideas with strategy and insight, then make them real through thoughtful design and execution. I’m here for the full journey, or just the part you need.
+    </div>
+    <div class="services-columns">
+      <div>
+        <div class="column-title">SHAPING</div>
+        <ul class="services-list" id="shaping-list">
+          <li>Creative Direction</li>
+          <li>Design Direction</li>
+          <li>Strategy</li>
+          <li>Identity</li>
+          <li>Conceptual Design</li>
+          <li>Prototyping</li>
+        </ul>
+      </div>
+      <div>
+        <div class="column-title">MAKING</div>
+        <ul class="services-list" id="making-list">
+          <li>Brand Design</li>
+          <li>Design Systems</li>
+          <li>Cinematography</li>
+          <li>Photography</li>
+          <li>Motion Graphics</li>
+          <li>Graphic Design</li>
+          <li>Prototypes</li>
+          <li>Illustration</li>
+          <li>3D</li>
+          <li>Print</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clients-section">
+  <div class="clients-heading-wrap">
+    <h2 class="clients-heading">
+      Selected clients <span id="clients-count"></span>
+    </h2>
+  </div>
+  <div class="clients-content-wrap">
+    <div class="clients-description">
+      I believe great work comes from curiosity, care, and long-term collaboration. I don’t just show up to create something good. I dig in, ask better questions, and push for the strongest possible result. Clients stick around because I listen, I challenge when it counts, and I always follow through. I’ve waded into freezing water, rolled in dirt, and worked deep into the night. Not for the drama, but because I care when it matters.
+    </div>
+    <ul class="clients-list" id="clients-list">
+      <li><a href="pdfs/AirGreenland.pdf" target="_blank">Air Greenland</a></li>
+      <li><a href="pdfs/ARKKCopenhagen.pdf" target="_blank">ARKK Copenhagen</a></li>
+      <li><a href="pdfs/Bemakers.pdf" target="_blank">Bemakers</a></li>
+      <li><a href="pdfs/Carlsberg.pdf" target="_blank">Carlsberg</a></li>
+      <li><a href="pdfs/COWI.pdf" target="_blank">COWI</a></li>
+      <!-- ... Add the rest of your clients here as needed ... -->
+    </ul>
+  </div>
+</section>
+
+<!-- Para Section -->
+<section class="para-section">
+  <p>
+    I don't just design—I crate</br>
+    meaningful experiences. Strategy, visuals, and <br>messaging that resonate with your customers,<br> evoke emotions, inspire action, and ultimately,<br> achieve tangible results.
+  </p>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="testimonials-left">
+    <h2 class="testimonials-heading">
+      Testimonials <span id="testimonials-count"></span>
+    </h2>
+  </div>
+  <div class="testimonials-right">
+    <div class="testimonial-slider" id="testimonial-slider">
+      <!-- Testimonial content will be injected here -->
+    </div>
+    <div class="testimonial-navigation">
+      <button id="testimonial-prev" aria-label="Previous testimonial">&lt;</button>
+      <span id="testimonial-index"></span>
+      <button id="testimonial-next" aria-label="Next testimonial">&gt;</button>
+    </div>
+  </div>
+</section>
+
+    <script>
+        // Live IST Clock
+function updateClock() {
+    // Uses Intl API to convert time to Asia/Kolkata timezone
+    const now = new Date();
+    const istTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+    const h = String(istTime.getHours()).padStart(2, '0');
+    const m = String(istTime.getMinutes()).padStart(2, '0');
+    const s = String(istTime.getSeconds()).padStart(2, '0');
+    document.getElementById('ist-clock').textContent = `${h}:${m}:${s} IST`;
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+function updateServiceCount() {
+  const shaping = document.querySelectorAll("#shaping-list li").length;
+  const making = document.querySelectorAll("#making-list li").length;
+  document.getElementById("services-count").textContent = `(${shaping + making})`;
+}
+updateServiceCount();
+
+
+function updateClientsCount() {
+  const items = document.querySelectorAll("#clients-list li").length;
+  document.getElementById("clients-count").textContent = `(${items})`;
+}
+updateClientsCount();
+
+const testimonials = [
+  {
+    quote: `Lars possesses a remarkable aesthetic sense that consistently elevated the quality of our work, making sure we delivered exceptional results. As a Creative Director, he’s not only visionary (he’s a true catalyst for creativity) but also structured and highly organized, which will transform every project he touches into a resounding success. Moreover, he possesses the great ability to create a serene and positive atmosphere on set, which is a refreshing change in the corporate world where things need to move fast. I would jump blindly at the chance to collaborate with him again in the future.`,
+    author: "CONNY Å REYNATRØD",
+    role: "Global Brand Communications Strategist",
+    src: "Siteimprove",
+    link: "#"
+  },
+  // Add more testimonials here as desired...
+  {
+    quote: `Lars brings out the best in everyone he works with—his passion and meticulous eye mean no detail is ever overlooked. Our brand grew stronger, more unified, and truly authentic with his guidance.`,
+    author: "MARKUS SVENSON",
+    role: "Marketing Director",
+    src: "Green Innovations",
+    link: "#"
+  },
+  {
+    quote: `Working with Lars is a creative delight. He listens deeply, inspires the team, and always delivers beyond expectations.`,
+    author: "JULIA MARTINS",
+    role: "Head of Creative",
+    src: "Urbanora",
+    link: "#"
+  },
+  {
+    quote: `His vision shaped our story beautifully. Projects with Lars always exceed our hopes!`,
+    author: "EMILIE DONNER",
+    role: "Co-Founder",
+    src: "BrandRise",
+    link: "#"
+  },
+  {
+    quote: `With Lars, every collaboration is open, energetic, and results-driven. He pushes ideas and teams to new heights in the best way possible.`,
+    author: "FELIX BAUER",
+    role: "Content Manager",
+    src: "EVO Tech",
+    link: "#"
+  }
+];
+
+const total = testimonials.length;
+document.getElementById('testimonials-count').textContent = `(${total})`;
+
+let cur = 0;
+function renderTestimonial(idx) {
+  const t = testimonials[idx];
+  document.getElementById('testimonial-slider').innerHTML = `
+    <div class="testimonial-quote">${t.quote}</div>
+    <div class="testimonial-author">${t.author}</div>
+    <div class="testimonial-role">${t.role}</div>
+    <a href="${t.link}" target="_blank" class="testimonial-src">${t.src}</a>
+  `;
+  document.getElementById('testimonial-index').textContent = `(${idx+1}/${total})`;
+}
+function prevTestimonial() {
+  cur = (cur - 1 + total) % total;
+  renderTestimonial(cur);
+}
+function nextTestimonial() {
+  cur = (cur + 1) % total;
+  renderTestimonial(cur);
+}
+document.getElementById('testimonial-prev').onclick = prevTestimonial;
+document.getElementById('testimonial-next').onclick = nextTestimonial;
+
+// Initial render
+renderTestimonial(cur);
+</script>
+
+</body>
+</html>

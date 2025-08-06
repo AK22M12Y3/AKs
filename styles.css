@@ -1,0 +1,532 @@
+html,
+body {
+    background: #fff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #111;
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.top-bar {
+    width: 100%;
+    max-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 32px 40px 0 40px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    box-sizing: border-box;
+    margin-bottom: 211px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.location-time {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.black-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #111;
+    border-radius: 50%;
+}
+
+.main-content {
+    margin: 48px 0 0 60px;
+    max-width: 100%;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.headline {
+    font-size: 7vw;
+    min-font-size: 50px;
+    line-height: 1.01;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    max-width: 1200px;
+    word-break: break-word;
+    margin-top: 150px;
+}
+
+/* Navigation bar fixed and centered */
+
+.nav-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+
+    border-top: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+/* Padding bottom for content not to be hidden behind navbar */
+body {
+    padding-bottom: 70px;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.nav a {
+    text-decoration: none;
+    padding: 6px 18px;
+    font-size: 9px;
+    color: #222;
+    background: none;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    outline: none;
+    transition: background .25s, color .25s;
+    cursor: pointer;
+    box-shadow: none;
+    position: relative;
+}
+
+.nav a.active {
+    color: #000;
+    background: none;
+}
+
+.nav a:hover,
+.nav a:focus {
+    background: #222;
+    color: #fff;
+}
+
+/* Hide intro-text on small screens */
+.intro-text {
+    position: absolute;
+    right: 44px;
+    top: 280px;
+    width: 290px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #202020;
+    text-align: left;
+    margin-top: 200px;
+}
+
+@media (max-width: 1100px) {
+    .main-content {
+        margin-left: 30px;
+    }
+
+    .intro-text {
+        right: 20px;
+        top: 250px;
+        width: 220px;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-content {
+        margin-left: 8px;
+    }
+
+    .headline {
+        font-size: 10vw;
+    }
+
+    .top-bar {
+        padding: 18px 10px 0 10px;
+        font-size: 13px;
+    }
+
+    .intro-text {
+        display: none;
+    }
+
+    .nav-wrapper {
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        margin-top: 25px;
+        margin-left: 4px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 13px 4px 0 6px;
+    }
+
+    .headline {
+        font-size: 13vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        /* Forces all nav links onto one line */
+        flex-wrap: nowrap;
+
+        /* Adds horizontal scroll if nav links overflow */
+        overflow-x: auto;
+    }
+}
+
+/* Fullscreen video section */
+
+.video-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh; /* This will apply on screens wider than 768px */
+    overflow: hidden;
+    background: #000;
+}
+
+.video-section video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+.video-overlay-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Montserrat', Arial, sans-serif;
+    padding: 0 20px;
+    font-size: 2.5vw;
+    max-width: 80vw;
+    margin: 0 auto;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+/* --- RESPONSIVENESS FOR SMALLER SCREENS --- */
+@media (max-width: 768px) {
+
+    .video-section {
+        height: 50vh; /* ADDED THIS LINE: Sets the height for phones/tablets */
+    }
+
+    .video-overlay-content {
+        font-size: 5vw;
+    }
+}
+
+/* Selected Work Section */
+.selected-work-section {
+    background: #fff;
+    padding: 60px 0 20px 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.selected-work-inner {
+    max-width: 1500px;
+    margin: auto;
+    padding: 0 3vw;
+}
+
+.selected-work-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-work-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.selected-work-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #111;
+    border-radius: 50%;
+    margin-bottom: 8px;
+}
+
+.selected-work-title {
+    font-size: 2.8vw;
+    min-font-size: 28px;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+}
+
+.selected-work-count {
+    font-size: 1.8vw;
+    min-font-size: 14px;
+    vertical-align: super;
+}
+
+.view-all-btn {
+    font-size: 15px;
+    font-weight: 500;
+    color: #111;
+    text-decoration: none;
+    letter-spacing: .05em;
+    padding: 7px 18px;
+    border-radius: 20px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background .16s, color .16s;
+}
+
+.view-all-btn:hover {
+    background: #222;
+    color: #fff;
+}
+
+.selected-work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.work-item {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0;
+    text-decoration: none;
+}
+
+.work-item img {
+    width: 100%;
+    display: block;
+    border-radius: 0;
+    height: auto;
+    max-height: 750px;
+}
+
+.work-item-label {
+    position: absolute;
+    left: 22px;
+    bottom: 65px;
+    font-size: 2vw;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.07em;
+    text-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+}
+
+/* --- New Video Section (Duplicate Styling) --- */
+
+.custom-video-section {
+    position: relative;
+    width: calc(100vw - 80px); /* 40px margin on both sides */
+    height: 100vh; /* Default height for larger screens */
+    margin: 0 40px;
+    overflow: hidden;
+    background: #000;
+    border-radius: 8px; /* optional, for smooth edges */
+}
+
+.custom-video-section video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    border-radius: 8px; /* match container for seamless edges */
+}
+
+.custom-video-overlay-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Montserrat', Arial, sans-serif;
+    padding: 0 20px;
+    font-size: 2.5vw;
+    max-width: 80vw;
+    margin: 0 auto;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+/* --- RESPONSIVENESS FOR SMALLER SCREENS --- */
+@media (max-width: 768px) {
+    .custom-video-section {
+        height: 50vh; /* ADDED THIS LINE: Sets the height for phones/tablets */
+    }
+
+    .custom-video-overlay-content {
+        font-size: 5vw;
+    }
+}
+
+/* Note: For the intended font, add this to your HTML <head>:
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+   And set your body's font-family: 'Poppins', sans-serif;
+*/
+
+
+/* Contact Section Styling */
+#contact-section {
+     font-family: 'Montserrat', Arial, sans-serif; /* Recommended font */
+    color: #333;
+    background-color: #f4f4f4; /* Clean background color */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 100px 8%;
+    overflow: hidden; /* Important for containing animations */
+    height: 40vw;
+}
+
+/* Left Column */
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact-left h2 {
+    font-size: 5rem;
+    font-weight: 600;
+    margin: 0 0 25px 0;
+}
+
+.cta-button {
+    text-decoration: none;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button::before {
+    content: '• ';
+}
+
+.cta-button:hover {
+    background-color: #cccccc;
+}
+
+/* Right Column */
+.contact-right {
+    display: flex;
+    gap: 100px;
+    padding-top: 15px;
+}
+
+.contact-group h4 {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 25px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+}
+
+.contact-group a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.contact-group a:hover {
+    opacity: 0.7;
+}
+
+/* --- Animation Classes --- */
+.animate-on-scroll {
+    opacity: 2.2;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Staggered animation delays for a nice effect */
+.contact-left .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.contact-right .animate-on-scroll:nth-of-type(1) { transition-delay: 0.2s; }
+.contact-right .animate-on-scroll:nth-of-type(2) { transition-delay: 0.3s; }
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+    #contact-section {
+        flex-direction: column;
+        gap: 60px;
+    }
+    .contact-left h2 {
+        font-size: 4rem;
+    }
+    .contact-right {
+        gap: 60px;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-left h2 {
+        font-size: 3rem;
+    }
+    .contact-right {
+       flex-direction: column;
+       gap: 40px;
+    }
+    .contact-group a {
+        font-size: 1.1rem;
+    }
+}

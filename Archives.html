@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Archive – Hau</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:900,600,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: inherit; }
+    html,
+     body {
+    background: #fff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #111;
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.top-bar {
+    width: 100%;
+    max-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 32px 40px 0 40px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    box-sizing: border-box;
+    margin-bottom: 0px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.location-time {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.black-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #111;
+    border-radius: 50%;
+}
+
+.main-content {
+    margin: 48px 0 0 60px;
+    max-width: 100%;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.headline {
+    font-size: 7vw;
+    min-font-size: 50px;
+    line-height: 1.01;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    max-width: 1200px;
+    word-break: break-word;
+    margin-top: 150px;
+}
+
+/* Navigation bar fixed and centered */
+
+.nav-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+
+    border-top: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+/* Padding bottom for content not to be hidden behind navbar */
+body {
+    padding-bottom: 70px;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: nowrap;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.nav a {
+    text-decoration: none;
+    padding: 6px 18px;
+    font-size: 9px;
+    color: #222;
+    background: none;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    outline: none;
+    transition: background .25s, color .25s;
+    cursor: pointer;
+    box-shadow: none;
+    position: relative;
+}
+
+.nav a.active {
+    color: #000;
+    background: none;
+}
+
+.nav a:hover,
+.nav a:focus {
+    background: #222;
+    color: #fff;
+}
+
+   /* Main content styles */
+.content {
+    flex: 1;
+    margin-left: 0px;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.image-grid-container {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+    gap: 15px;
+    align-items: flex-start;
+    padding-bottom: 20px; /* Space for scrollbar */
+}
+
+.image-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.image-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Custom scrollbar */
+.image-grid-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.image-grid-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.image-grid-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.image-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #555;}
+
+  </style>
+</head>
+<body>
+  <!-- HEADER and NAVBAR -->
+  <div class="top-bar">
+    <span class="logo">AKsˇ</span>
+    <span class="location-time">
+      <span>New Delhi</span>
+      <span class="black-dot"></span>
+      <span id="ist-clock">--:--:-- IST</span>
+    </span>
+  </div>
+  
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <a href="index.html">HOME</a>
+      <a href="work.html">WORK</a>
+      <a href="archives.html" class="active">ARCHIVE</a>
+      <a href="About.html">ABOUT</a>
+      <a href="Contact.html">CONTACT</a>
+    </nav>
+  </div>
+
+ <main class="content">
+        <div class="image-grid-container">
+            <div class="image-grid" id="imageGrid">
+                <!-- Images will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+  <script>
+    // Live Clock
+    function updateClock() {
+  // Create a new Date object for the current time
+  const now = new Date();
+
+  // Define the options for formatting the time for IST (Asia/Kolkata)
+  const options = {
+    timeZone: 'Asia/Kolkata', // The IANA time zone name for India
+    hour: '2-digit',          // Display hour with leading zero (e.g., 05)
+    minute: '2-digit',        // Display minute with leading zero
+    second: '2-digit',        // Display second with leading zero
+    hour12: false             // Use 24-hour format
+  };
+
+  // Create a formatter for the Indian English locale with the specified options
+  const formatter = new Intl.DateTimeFormat('en-IN', options);
+
+  // Format the current date to get the time string in IST
+  const istTime = formatter.format(now);
+
+  // Update the HTML element with the IST time and label
+  const clockElement = document.getElementById('ist-clock');
+  if (clockElement) {
+    clockElement.textContent = `${istTime} IST`;
+  }
+}
+
+// Run the function immediately on page load
+updateClock();
+
+// And then update the clock every second
+setInterval(updateClock, 1000);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const imageGrid = document.getElementById('imageGrid');
+    const gridContainer = document.querySelector('.image-grid-container');
+    
+    // Local image data - modify this with your actual images and links
+    const imageData = [
+        { src: 'images/BB-lookbook.jpg', link: 'project1.html', width: 300, height: 400 },
+        { src: 'images/BB-lookbook.jpg', link: 'project2.html', width: 300, height: 500 },
+        { src: 'images/BB-lookbook.jpg', link: 'project3.html', width: 300, height: 300 },
+        { src: 'images/BB-lookbook.jpg', link: 'project4.html', width: 300, height: 450 },
+        { src: 'images/BB-lookbook.jpg', link: 'project5.html', width: 300, height: 350 },
+        { src: 'images/BB-lookbook.jpg', link: 'project6.html', width: 300, height: 600 },
+        { src: 'images/BB-lookbook.jpg', link: 'project7.html', width: 300, height: 400 },
+        { src: 'images/BB-lookbook.jpg', link: 'project8.html', width: 300, height: 500 },
+        // Duplicate these to create more content for scrolling
+        { src: 'images/BB-lookbook.jpg', link: 'project1.html', width: 300, height: 400 },
+        { src: 'images/BB-lookbook.jpg', link: 'project2.html', width: 300, height: 500 },
+        { src: 'images/BB-lookbook.jpg', link: 'project3.html', width: 300, height: 300 },
+        { src: 'images/BB-lookbook.jpg', link: 'project4.html', width: 300, height: 450 },
+        { src: 'images/BB-lookbook.jpg', link: 'project5.html', width: 300, height: 350 },
+        { src: 'images/BB-lookbook.jpg', link: 'project6.html', width: 300, height: 600 },
+        { src: 'images/BB-lookbook.jpg', link: 'project7.html', width: 300, height: 400 },
+        { src: 'images/BB-lookbook.jpg', link: 'project8.html', width: 300, height: 500 },
+    ];
+
+    // Create columns for masonry layout
+    const columnCount = 8;
+    const columns = [];
+    
+    for (let i = 0; i < columnCount; i++) {
+        const column = document.createElement('div');
+        column.className = 'image-column';
+        imageGrid.appendChild(column);
+        columns.push(column);
+    }
+
+    // Function to load images into the grid
+    function loadImages(images) {
+        images.forEach((image, index) => {
+            const columnIndex = index % columnCount;
+            const imageItem = document.createElement('div');
+            imageItem.className = 'image-item';
+            
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = `Project ${index + 1}`;
+            img.style.height = `${image.height}px`;
+            
+            const link = document.createElement('a');
+            link.href = image.link;
+            // Use '_self' to open in same tab or '_blank' for new tab
+            link.target = '_self';
+            link.appendChild(img);
+            
+            imageItem.appendChild(link);
+            columns[columnIndex].appendChild(imageItem);
+        });
+    }
+
+    // Initial load
+    loadImages(imageData);
+
+    // Clone the grid for horizontal seamless looping
+    const gridClone = imageGrid.cloneNode(true);
+    imageGrid.parentNode.appendChild(gridClone);
+    gridClone.id = 'imageGridClone';
+
+    // Variables for horizontal scroll handling
+    let hScrollPosition = 0;
+    const hScrollWidth = imageGrid.scrollWidth;
+    let isHScrolling = false;
+
+    // Variables for vertical scroll handling
+    let vScrollPosition = 0;
+
+    // Horizontal scroll with mouse wheel
+    gridContainer.addEventListener('wheel', function(e) {
+        // Check if we're scrolling mostly horizontally
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+            e.preventDefault();
+            
+            if (isHScrolling) return;
+            
+            isHScrolling = true;
+            hScrollPosition += e.deltaX;
+            
+            // Reset position when reaching the end for seamless loop
+            if (hScrollPosition >= hScrollWidth) {
+                hScrollPosition = 0;
+            } else if (hScrollPosition <= 0) {
+                hScrollPosition = hScrollWidth;
+            }
+            
+            gridContainer.scrollTo({
+                left: hScrollPosition,
+                behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+                isHScrolling = false;
+            }, 100);
+        }
+        // Vertical scrolling happens naturally
+    });
+
+    // Touch support for mobile devices
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    gridContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    gridContainer.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX) {
+            // Swipe left
+            hScrollPosition += 300;
+        } else if (touchEndX > touchStartX) {
+            // Swipe right
+            hScrollPosition -= 300;
+        }
+        
+        // Ensure scroll position stays within bounds
+        if (hScrollPosition >= hScrollWidth) {
+            hScrollPosition = 0;
+        } else if (hScrollPosition <= 0) {
+            hScrollPosition = hScrollWidth;
+        }
+        
+        gridContainer.scrollTo({
+            left: hScrollPosition,
+            behavior: 'smooth'
+        });
+    }
+
+    // Make vertical scrolling infinite by duplicating content
+    function checkVerticalScroll() {
+        const scrollThreshold = gridContainer.scrollHeight - gridContainer.clientHeight - 500;
+        
+        if (gridContainer.scrollTop > scrollThreshold) {
+            // User has scrolled near bottom - add more content
+            loadImages(imageData);
+        }
+    }
+
+    // Check scroll position periodically
+    gridContainer.addEventListener('scroll', function() {
+        checkVerticalScroll();
+    });
+
+    // Initial check in case the container is already filled
+    checkVerticalScroll();
+});
+  </script>
+</body>
+</html>
