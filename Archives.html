@@ -277,29 +277,46 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Local image data - modify this with your actual images and links
     const imageData = [
-        { src: 'images/BB-lookbook.jpg', link: 'project1.html', width: 300, height: 400 },
+        { src: 'images/Cn.png', link: 'project1.html', width: 300, height: 400 },
+        { src: 'images/create a image of py.png', link: 'project2.html', width: 300, height: 300 },
+        { src: 'images/html, css, js langua.png', link: 'project3.html', width: 300, height: 300 },
+        { src: 'images/C++ language modern .png', link: 'project4.html', width: 300, height: 400 },
+        { src: 'images/temperature web app .png', link: 'project5.html', width: 300, height: 350 },
+        { src: 'images/CCNA .png', link: 'project6.html', width: 400, height: 300 },
+        { src: 'images/pdf.png', link: 'project7.html', width: 300, height: 400 },
+        { src: 'images/linkedin.png', link: 'project8.html', width: 300, height: 500 },
+        { src: 'images/RAP.png', link: 'project1.html', width: 300, height: 300 },
+        { src: 'images/sih.png', link: 'project2.html', width: 300, height: 500 },
+        { src: 'images/forage.png', link: 'project3.html', width: 300, height: 300 },
+        { src: 'images/PV.png', link: 'project4.html', width: 300, height: 450 },
+        { src: 'images/sql.png', link: 'project5.html', width: 300, height: 350 },
+        { src: 'images/Water.png', link: 'project6.html', width: 300, height: 300 },
+        { src: 'images/NAPI.png', link: 'project7.html', width: 300, height: 400 },
+        { src: 'images/ggbazar.png', link: 'project8.html', width: 250, height: 300 },
+
+        //duplicate image for horizontal scrolling
+        { src: 'images/Cn.png', link: 'project1.html', width: 300, height: 400 },
         { src: 'images/create a image of py.png', link: 'project2.html', width: 300, height: 500 },
         { src: 'images/html, css, js langua.png', link: 'project3.html', width: 300, height: 300 },
         { src: 'images/C++ language modern .png', link: 'project4.html', width: 300, height: 450 },
         { src: 'images/temperature web app .png', link: 'project5.html', width: 300, height: 350 },
-        { src: 'images/BB-lookbook.jpg', link: 'project6.html', width: 300, height: 600 },
-        { src: 'images/BB-lookbook.jpg', link: 'project7.html', width: 300, height: 400 },
-        { src: 'images/BB-lookbook.jpg', link: 'project8.html', width: 300, height: 500 },
-        // Duplicate these to create more content for scrolling
-        { src: 'images/BB-lookbook.jpg', link: 'project1.html', width: 300, height: 400 },
-        { src: 'images/BB-lookbook.jpg', link: 'project2.html', width: 300, height: 500 },
-        { src: 'images/BB-lookbook.jpg', link: 'project3.html', width: 300, height: 300 },
-        { src: 'images/BB-lookbook.jpg', link: 'project4.html', width: 300, height: 450 },
-        { src: 'images/BB-lookbook.jpg', link: 'project5.html', width: 300, height: 350 },
-        { src: 'images/BB-lookbook.jpg', link: 'project6.html', width: 300, height: 600 },
-        { src: 'images/BB-lookbook.jpg', link: 'project7.html', width: 300, height: 400 },
-        { src: 'images/BB-lookbook.jpg', link: 'project8.html', width: 300, height: 500 },
+        { src: 'images/CCNA .png', link: 'project6.html', width: 400, height: 500 },
+        { src: 'images/pdf.png', link: 'project7.html', width: 300, height: 400 },
+        { src: 'images/linkedin.png', link: 'project8.html', width: 300, height: 500 },
+        { src: 'images/RAP.png', link: 'project1.html', width: 300, height: 400 },
+        { src: 'images/sih.png', link: 'project2.html', width: 300, height: 500 },
+        { src: 'images/forage.png', link: 'project3.html', width: 300, height: 300 },
+        { src: 'images/PV.png', link: 'project4.html', width: 300, height: 450 },
+        { src: 'images/sql.png', link: 'project5.html', width: 300, height: 350 },
+        { src: 'images/Water.png', link: 'project6.html', width: 300, height: 100 },
+        { src: 'images/NAPI.png', link: 'project7.html', width: 300, height: 400 },
+        { src: 'images/ggbazar.png', link: 'project8.html', width: 300, height: 500 }
     ];
 
     // Create columns for masonry layout
-    const columnCount = 8;
+    const columnCount = 12;
     const columns = [];
-    
+
     for (let i = 0; i < columnCount; i++) {
         const column = document.createElement('div');
         column.className = 'image-column';
@@ -342,9 +359,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let hScrollPosition = 0;
     const hScrollWidth = imageGrid.scrollWidth;
     let isHScrolling = false;
-
-    // Variables for vertical scroll handling
-    let vScrollPosition = 0;
 
     // Horizontal scroll with mouse wheel
     gridContainer.addEventListener('wheel', function(e) {
@@ -413,11 +427,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Make vertical scrolling infinite by duplicating content
     function checkVerticalScroll() {
-        const scrollThreshold = gridContainer.scrollHeight - gridContainer.clientHeight - 500;
+        const scrollThreshold = 500; // Distance from bottom to trigger load
         
-        if (gridContainer.scrollTop > scrollThreshold) {
+        // Check if we're near the bottom of the container
+        if (gridContainer.scrollTop + gridContainer.clientHeight >= gridContainer.scrollHeight - scrollThreshold) {
             // User has scrolled near bottom - add more content
             loadImages(imageData);
+            
+            // Adjust scroll position to maintain smooth experience
+            const newScrollHeight = gridContainer.scrollHeight;
+            gridContainer.scrollTop = newScrollHeight - (gridContainer.clientHeight + scrollThreshold);
         }
     }
 
